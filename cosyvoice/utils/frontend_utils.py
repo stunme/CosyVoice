@@ -76,11 +76,11 @@ def split_paragraph(text: str, tokenize, lang="zh", token_max_n=80, token_min_n=
             return len(tokenize(_text)) < merge_len
 
     if lang == "zh":
-        pounc = ['。', '？', '！', '；', '：', '、', '.', '?', '!', ';']
+        pounc = ['。', '？', '！', '；', '：','.', '?', '!', ';']
     else:
         pounc = ['.', '?', '!', ';', ':']
     if comma_split:
-        pounc.extend(['，', ','])
+        pounc.extend(['，', ',' ,'、' ])
 
     if text[-1] not in pounc:
         if lang == "zh":
