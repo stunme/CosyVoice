@@ -151,7 +151,7 @@ def main():
             instruction_text = gr.Text(label="操作步骤", value=instruct_dict[inference_mode_list[1]], scale=0.5)
             sft_dropdown = gr.Dropdown(choices=sft_spk, label='选择预训练音色', value=sft_spk[0], scale=0.25)
             stream = gr.Radio(choices=stream_mode_list, label='是否流式推理', value=stream_mode_list[0][1])
-            speed = gr.Number(value=0.95, label="速度调节(仅支持非流式推理)", minimum=0.5, maximum=2.0, step=0.05)
+            speed = gr.Number(value=1.05, label="速度调节(仅支持非流式推理)", minimum=0.5, maximum=2.0, step=0.05)
             with gr.Column(scale=0.25):
                 seed_button = gr.Button(value="\U0001F3B2")
                 seed = gr.Number(value=0, label="随机推理种子")
