@@ -179,14 +179,34 @@ def main():
     demo.launch(share=True, show_error=True)
 
 if __name__ == '__main__':
+    #parser = argparse.ArgumentParser()
+    #parser.add_argument('--port',
+    #                    type=int,
+    #                    default=8000)
+    #parser.add_argument('--model_dir',
+    #                    type=str,
+    #                    default='iic/CosyVoice-300M',
+    #                    help='local path or modelscope repo id')
     parser = argparse.ArgumentParser()
     parser.add_argument('--port',
                         type=int,
                         default=8000)
     parser.add_argument('--model_dir',
                         type=str,
-                        default='iic/CosyVoice-300M',
+                        default='pretrained_models/CosyVoice2-0.5B',
                         help='local path or modelscope repo id')
+    args = parser.parse_args()
+    try:
+        cosyvoice = CosyVoice(args.model_dir)
+    except Exception:
+        try:
+            cosyvoice = CosyVoice2(args.model_dir)
+        except Exception:
+            raise TypeError('no valid model_type!')
+
+    ##=============================
+
+  
     args = parser.parse_args()
     cosyvoice = CosyVoice(args.model_dir)
     sft_spk = cosyvoice.list_avaliable_spks()
