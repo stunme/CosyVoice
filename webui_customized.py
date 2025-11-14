@@ -151,7 +151,7 @@ def main():
             instruction_text = gr.Text(label="操作步骤", value=instruct_dict[inference_mode_list[1]], scale=0.5)
             sft_dropdown = gr.Dropdown(choices=sft_spk, label='选择预训练音色', value=sft_spk[0], scale=0.25)
             stream = gr.Radio(choices=stream_mode_list, label='是否流式推理', value=stream_mode_list[0][1])
-            speed = gr.Number(value=1.05, label="速度调节(仅支持非流式推理)", minimum=0.5, maximum=2.0, step=0.05)
+            speed = gr.Number(value=1.15, label="速度调节(仅支持非流式推理)", minimum=0.5, maximum=2.0, step=0.05)
             with gr.Column(scale=0.25):
                 seed_button = gr.Button(value="\U0001F3B2")
                 seed = gr.Number(value=0, label="随机推理种子")
@@ -159,7 +159,7 @@ def main():
         with gr.Row():
             prompt_wav_upload = gr.Audio(sources='upload', type='filepath', label='选择prompt音频文件，注意采样率不低于16khz')
             prompt_wav_record = gr.Audio(sources='microphone', type='filepath', label='录制prompt音频文件')
-        prompt_text = gr.Textbox(label="输入prompt文本", lines=1, placeholder="你呢，是行政领导。关心职工，这是你的分内工作。我，我是个业务干部，他妈改嫁不改嫁我管得着么？！我的爷，这可就是您有所不知了。他可真的不是外行啊。", value='你呢，是行政领导。关心职工，这是你的分内工作。我，我是个业务干部，他妈改嫁不改嫁我管得着么？！我的爷，这可就是您有所不知了。他可真的不是外行啊。')
+        prompt_text = gr.Textbox(label="输入prompt文本", lines=1, placeholder="1929年，美国股市大幅下跌，几个月内市值蒸发一半，揭开了经济大萧条的序幕", value='1929年，美国股市大幅下跌，几个月内市值蒸发一半，揭开了经济大萧条的序幕')
         instruct_text = gr.Textbox(label="输入instruct文本", lines=1, placeholder="请输入instruct文本.", value='')
 
         generate_button = gr.Button("生成音频")
